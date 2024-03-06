@@ -2,8 +2,9 @@ import { Request, Response, Router } from 'express';
 
 const router = Router();
 
-router.get('/foo', (_req: Request, res: Response) =>
-  res.status(200).json({ foo: 'bar' }),
-);
+router.get('/heartbeat', (_req: Request, res: Response) => {
+  const hrtime = process.hrtime.bigint();
+  res.status(200).json({ heartbeat: hrtime.toString() });
+});
 
 export default router;
