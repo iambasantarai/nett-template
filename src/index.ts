@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import { port } from './utils/env.util';
 import { AppDataSource } from './config/data-source';
 import router from './routes';
+import { logger } from './utils/log.util';
 
 const app: Application = express();
 
@@ -13,14 +14,14 @@ AppDataSource.initialize()
     app.use('/api', router);
 
     console.log('=== uwu ===');
-    console.log('DATABASE CONNECTION ESTABLISHED!');
+    logger.info('DATABASE CONNECTION ESTABLISHED!', 'modulename');
     console.log('=== uwu ===');
 
     app.listen(port, (): void => {
-      console.log(`Listening on ${port}`);
-      console.log(`http://localhost:${port}`);
+      logger.info(`Listening on ${port}`);
+      logger.info(`http://localhost:${port}`);
     });
   })
   .catch((error) => {
-    console.log('ERROR: ', error);
+    logger.error(error.message);
   });
