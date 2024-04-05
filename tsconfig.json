@@ -7,7 +7,6 @@
     "strictNullChecks": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "nodenext",
     "noImplicitAny": false,
     "rootDir": "./src",
     "outDir": "./dist",
@@ -16,8 +15,12 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "strictNullChecks": true,
-    "target": "es2020"
+    "target": "es6"
   },
   "include": ["src/**/*"],
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
 }
